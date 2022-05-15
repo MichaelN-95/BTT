@@ -1,0 +1,142 @@
+<div class="card">
+  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+    <div class="card-body container">
+      <!-- Name/Date/Time/Location -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Name</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              ngModel
+              name="title"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Date</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              required
+              ngModel
+              name="date"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Image</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              ngModel
+              name="image"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Location</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              ngModel
+              name="location"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Description</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              required
+              ngModel
+              name="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Price</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              name="price"
+              required=""
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Organizer</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              name="organizer"
+              required=""
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Capacity</label>
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              name="capacity"
+              required=""
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Organizer Email</label>
+            <input type="text" class="form-control" ngModel name="email" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Capacity/Organizer -->
+      <div class="row text-center mt-2">
+        <div class="col-md-12">
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary me-2"
+              [disabled]="!eventForm.valid"
+            >
+              Submit
+            </button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary ms-2"
+              (click)="clearForm(eventForm)"
+            >
+              Reset Form
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

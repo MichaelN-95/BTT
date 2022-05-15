@@ -1,0 +1,29 @@
+<div class="">
+  <div class="mx-auto"></div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let event of events">
+      <div class="card">
+        <img src="{{ event.image }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h1 class="card-title">{{ event.title }}</h1>
+          <p class="lead">
+            <i class="bi bi-geo-alt-fill" style="font-size: medium">{{
+              event.location
+            }}</i>
+          </p>
+          <p class="card-text text-truncate">{{ event.description }}</p>
+          <a class="btn btn-primary" (click)="eventDetail(event.id)"
+            >Book Now!</a
+          >
+        </div>
+        <div class="card-footer placeholder-glow hstack gap-2">
+          {{ event.date }}
+          <div class="vr"></div>
+          {{ event.time }}
+          <div class="ms-auto"></div>
+          {{ event.price }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
