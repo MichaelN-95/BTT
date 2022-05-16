@@ -1,19 +1,143 @@
-<button
-  class="btn btn-success"
-  (click)="
-    createEvent(
-      'michael',
-      '10/12/2022',
-      '07:00',
-      'Michaelnorman@testing.ie',
-      'Edenderry',
-      'random descriotion',
-      'random image',
-      'Organizer',
-      0,
-      100
-    )
-  "
->
-  Add event
-</button>
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card">
+  <h4 class="card-header">Add Event</h4>
+  <div class="card-body container">
+    <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
+      <!-- Name/Date/Time/Location -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventName()">
+            <label class="bmd-label-floating">Event Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              name="title"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventDate()">
+            <label class="bmd-label-floating">Event Date</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              formControlName="date"
+              name="date"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventImage()">
+            <label class="bmd-label-floating">Event Image</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="image"
+              name="image"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventLocation()">
+            <label class="bmd-label-floating">Event Location</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="location"
+              name="location"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group" [ngClass]="setClassEventDescription()">
+            <label class="bmd-label-floating">Event Description</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              formControlName="description"
+              name="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventPrice()">
+            <label class="bmd-label-floating">Event Price</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="price"
+              name="price"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventOrganizer()">
+            <label class="bmd-label-floating">Organizer</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="organizer"
+              name="organizer"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventCapacity()">
+            <label class="bmd-label-floating">Event Capacity</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="capacity"
+              name="capacity"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group" [ngClass]="setClassEventEmail()">
+            <label class="bmd-label-floating">Organizer Email</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="email"
+              name="email"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Capacity/Organizer -->
+      <div class="row text-center mt-2">
+        <div class="col-md-12">
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary me-2"
+              [disabled]="!eventForm.valid"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary ms-2"
+              (click)="clearForm(eventForm)"
+            >
+              Reset Form
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

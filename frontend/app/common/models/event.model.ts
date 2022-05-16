@@ -1,11 +1,12 @@
 export class Event {
   _id?: any;
   name?: string;
-  description?: string;
   date?: Date;
   location?: string;
-  image?: string;
+  description?: string;
+  organizer?: string;
+  email?: string;
   price?: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  image?: string;
+  capacity?: number;
 }

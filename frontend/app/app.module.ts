@@ -21,6 +21,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToastComponent } from './common/toast/toast.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ToastComponent } from './common/toast/toast.component';
         allowedDomains: ['localhost:3000', 'localhost:4200'],
       },
     }),
+    NgbModule,
   ],
   providers: [EventsService, ToastComponent, UserService],
   bootstrap: [AppComponent],

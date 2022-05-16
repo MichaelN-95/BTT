@@ -1,52 +1,52 @@
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="card">
-  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
-    <div class="card-body container">
+  <h4 class="card-header">Add Event</h4>
+  <div class="card-body container">
+    <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
       <!-- Name/Date/Time/Location -->
       <div class="row">
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventName()">
             <label class="bmd-label-floating">Event Name</label>
             <input
               type="text"
               class="form-control"
-              required
-              ngModel
+              formControlName="name"
               name="title"
             />
           </div>
         </div>
+
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventDate()">
             <label class="bmd-label-floating">Event Date</label>
             <input
               type="datetime-local"
               class="form-control"
-              required
-              ngModel
+              formControlName="date"
               name="date"
             />
           </div>
         </div>
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventImage()">
             <label class="bmd-label-floating">Event Image</label>
             <input
               type="text"
               class="form-control"
-              required
-              ngModel
+              formControlName="image"
               name="image"
             />
           </div>
         </div>
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventLocation()">
             <label class="bmd-label-floating">Event Location</label>
             <input
               type="text"
               class="form-control"
-              required
-              ngModel
+              formControlName="location"
               name="location"
             />
           </div>
@@ -56,13 +56,12 @@
       <!-- Description -->
       <div class="row">
         <div class="col-md-12">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventDescription()">
             <label class="bmd-label-floating">Event Description</label>
             <textarea
               class="form-control"
               rows="5"
-              required
-              ngModel
+              formControlName="description"
               name="description"
             ></textarea>
           </div>
@@ -71,47 +70,49 @@
 
       <div class="row">
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventPrice()">
             <label class="bmd-label-floating">Event Price</label>
             <input
               type="text"
               class="form-control"
-              ngModel
+              formControlName="price"
               name="price"
-              required=""
             />
           </div>
         </div>
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventOrganizer()">
             <label class="bmd-label-floating">Organizer</label>
             <input
               type="text"
               class="form-control"
-              ngModel
+              formControlName="organizer"
               name="organizer"
-              required=""
             />
           </div>
         </div>
 
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventCapacity()">
             <label class="bmd-label-floating">Event Capacity</label>
             <input
               type="text"
               class="form-control"
-              ngModel
+              formControlName="capacity"
               name="capacity"
-              required=""
             />
           </div>
         </div>
 
         <div class="col-md-3">
-          <div class="form-group">
+          <div class="form-group" [ngClass]="setClassEventEmail()">
             <label class="bmd-label-floating">Organizer Email</label>
-            <input type="text" class="form-control" ngModel name="email" />
+            <input
+              type="text"
+              class="form-control"
+              formControlName="email"
+              name="email"
+            />
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@
               Submit
             </button>
             <button
-              type="submit"
+              type="button"
               class="btn btn-outline-primary ms-2"
               (click)="clearForm(eventForm)"
             >
@@ -137,6 +138,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

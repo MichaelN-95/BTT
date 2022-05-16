@@ -3,7 +3,7 @@ import { Document, model, Schema } from 'mongoose';
 const eventSchema = new Schema<IEvent>({
   name: String,
   description: String,
-  date: Date,
+  date: { type: Date },
   location: String,
   image: String,
   price: Number,

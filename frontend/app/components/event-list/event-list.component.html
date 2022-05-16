@@ -20,8 +20,12 @@
           {{ event.date }}
           <div class="vr"></div>
           {{ event.time }}
-          <div class="ms-auto"></div>
-          {{ event.price }}
+          <div class="ms-auto">
+            <div *ngIf="event.price > 0; else free">
+              {{ "€" + event.price }}
+            </div>
+            <ng-template #free class="ms-auto">Free</ng-template>
+          </div>
         </div>
       </div>
     </div>

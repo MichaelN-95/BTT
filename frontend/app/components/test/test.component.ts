@@ -1,50 +1,156 @@
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastComponent } from 'frontend/app/common/toast/toast.component';
+import { TestService } from 'frontend/app/services/test.service';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
-  events: any;
-  constructor(private http: HttpClient) {}
+  eventForm: FormGroup;
 
-  createEvent(
-    name: string,
-    date: string,
-    time: string,
-    email: string,
-    location: string,
-    description: string,
-    image: string,
-    organizer: string,
-    price: number,
-    capacity: number
+  name = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  date = new FormControl('', [Validators.required]);
+
+  location = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  description = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  price = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  organizer = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  capacity = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  email = new FormControl('', [
+    Validators.required,
+    Validators.email,
+    Validators.minLength(2),
+  ]);
+
+  image = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
+  ]);
+
+  constructor(
+    private testService: TestService,
+    public toast: ToastComponent,
+    private router: Router
   ) {
-    this.http
-      .post('http://localhost:5000/api/events', {
-        name: name,
-        date: date,
-        time: time,
-        email: email,
-        location: location,
-        description: description,
-        image: image,
-        organizer: organizer,
-        price: price,
-        capacity: capacity,
-      })
-      .subscribe((data) => {
-        console.log(data);
-      });
-  }
-  ngOnInit(): void {
-    this.http.get('http://localhost:5000/api/events').subscribe((data) => {
-      console.log(data);
+    this.eventForm = new FormGroup({
+      name: this.name,
+      date: this.date,
+      location: this.location,
+      description: this.description,
+      organizer: this.organizer,
+      email: this.email,
+      price: this.price,
+      image: this.image,
+      capacity: this.capacity,
     });
-
-    console.log(this.events + 'events');
   }
+  clearForm(form: FormGroup) {
+    form.reset();
+  }
+
+  setClassEventName() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventDate() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventLocation() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventDescription() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventOrganizer() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventEmail() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventPrice() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventImage() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  setClassEventCapacity() {
+    return {
+      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
+    };
+  }
+
+  addEvent() {
+    this.testService.addEvent(this.eventForm.value).subscribe({
+      next: (res) => {
+        this.toast.setMessage('You successfully registered!', 'success');
+        this.router.navigate(['/home']);
+      },
+      error: (error) => this.toast.setMessage('Form not valid', 'danger'),
+    });
+  }
+  ngOnInit(): void {}
 }
