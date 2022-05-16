@@ -1,27 +1,7 @@
-# BTT
+# Better Ticket Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+This is a work in progress project for my dissertation, the end goal is to simulate what a self hosted ticketing system could look like.
 
-## Development server
+Inspiration for this came from a charity event hosted by a local football club where tickets were printed, sold and used for entry. I wanted to see if a small self hosted solution that can be used by town/county committees would be feasible and easier track ticket sales and avoid loss of tickets.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The end result will be bundled together via docker and docker-compose to allow it to be deployed either locally or on a cloud provider.
