@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit {
   ]);
   password = new FormControl('', [
     Validators.required,
-    Validators.minLength(6),
+    Validators.minLength(5),
   ]);
 
   constructor(

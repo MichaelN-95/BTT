@@ -21,7 +21,7 @@ class UserCtrl extends BaseCtrl {
           if (error || !isMatch) {
             return res.sendStatus(403);
           }
-          const token = jwt.sign({ user }, secret, { expiresIn: '24h' });
+          const token = jwt.sign({ user }, secret, { expiresIn: '7d' }); // expires in 7 days
           return res.status(200).json({ token });
         }
       );

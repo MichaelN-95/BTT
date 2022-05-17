@@ -7,10 +7,10 @@
     "build": "ng build && tsc -p backend",
     "start": "node dist/backend/app.js",
     "predev": "tsc -p backend",
-    "dev": "concurrently \"mongod\" \"ng serve --open\" \"tsc -w -p backend\" \"nodemon dist/server/app.js\"",
-    "prod": "concurrently \"mongod\" \"ng build && tsc -p backend && node dist/server/app.js\"",
+    "dev": "concurrently \"mongod\" \"ng serve --open\" \"tsc -w -p backend\" \"nodemon dist/backend/app.js\"",
+    "prod": "concurrently \"mongod\" \"ng build && tsc -p backend && node dist/backend/app.js\"",
     "test": "ng test",
-    "testbe": "tsc -p backend && mocha dist/server/test --exit",
+    "testbe": "tsc -p backend && mocha dist/backend/test --exit",
     "lint": "ng lint && htmlhint \"frontend/**/*.html\" && sass-lint \"frontend/**/*.scss\" -v",
     "lintfix": "ng lint -- --fix"
   },
