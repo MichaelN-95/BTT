@@ -14,8 +14,8 @@ export class EventsService {
     return this.http.get<Event[]>('/api/events');
   }
 
-  getEvent(id: number) {
-    return this.http.get<any>(`/api/event/${id}`);
+  getEvent(_id: string) {
+    return this.http.get<any>(`/api/event/${_id}`);
   }
 
   addEvent(event: any) {

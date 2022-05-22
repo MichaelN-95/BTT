@@ -8,6 +8,9 @@ const eventSchema = new Schema<IEvent>({
   location: String,
   image: String,
   price: Number,
+  capacity: Number,
+  organizer: String,
+  email: String,
   createdAt: { type: Date, default: Date.now, immutable: true },
   updatedAt: { type: Date, default: Date.now },
   attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -20,6 +23,9 @@ interface IEvent extends Document {
   location: string;
   image: string;
   price: number;
+  capacity: number;
+  organizer: string;
+  email: string;
   createdAt: Date;
   updatedAt: Date;
   attendees: { type: Schema.Types.ObjectId };

@@ -1,0 +1,66 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<div class="" *ngIf="!isLoading">
+  <h1>Event Details</h1>
+  <!-- 70/30 grid -->
+  <div class="bg-dark bg-gradient rounded text-white">
+    <div class="row text-white">
+      <div class="col-md-8">
+        <div class="p-3 hw-100">
+          <img src="../../../../assets/haze.webp" alt="" class="img-fluid" />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="description rounded m-3">
+          <h2 class="">Event : {{ event.name }}</h2>
+          <hr />
+          <p>
+            <span class="fw-semibold">Date :</span>
+            {{ event.date | date: "dd/MM/yyyy" }}
+          </p>
+          <p>
+            <span class="fw-semibold">Time : </span
+            >{{ event.date | date: "shortTime" }}
+          </p>
+          <p><span class="fw-semibold">Location: </span>{{ event.location }}</p>
+          <p>
+            <span class="fw-semibold">Price: </span>{{ event.price | currency }}
+          </p>
+          <p>
+            <span class="fw-semibold">Tickets available: </span
+            >{{ event.capacity }}
+          </p>
+          <p>
+            <span class="fw-semibold">Organizer: </span>{{ event.organizer }}
+          </p>
+          <p>
+            <span class="fw-semibold">Organizer Contact: </span
+            >{{ event.email }}
+          </p>
+          <div class="row text-center">
+            <div class="">
+              <button class="btn btn-outline-primary w-100">Book now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-white mt-3">
+      <div class="col-md-12">
+        <div class="container">
+          <div class="description rounded bigger">
+            <h3>Event Description</h3>
+            <hr />
+            <p>{{ event.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container p-2">
+      <h2>Other Events</h2>
+      <app-event-list class="text-dark m-2"></app-event-list>
+    </div>
+  </div>
+</div>

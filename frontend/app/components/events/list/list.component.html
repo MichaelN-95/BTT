@@ -1,22 +1,22 @@
-<div class="">
+<div class="mh">
   <div class="mx-auto"></div>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let event of events">
-      <div class="card">
+      <div class="card text-bg-light">
         <img
           src="{{ eventImage }}"
           class="card-img-top img-thumbnail"
           alt="..."
         />
         <div class="card-body">
-          <h1 class="card-title">{{ event.name }}</h1>
+          <h3 class="card-title">{{ event.name }}</h3>
           <p class="lead">
             <i class="bi bi-geo-alt-fill" style="font-size: medium">{{
               event.location
             }}</i>
           </p>
           <p class="card-text text-truncate">{{ event.description }}</p>
-          <a class="btn btn-primary" (click)="eventDetail(event._id)"
+          <a class="btn btn-primary" routerLink="detail/{{ event._id }}"
             >Book Now!</a
           >
         </div>
