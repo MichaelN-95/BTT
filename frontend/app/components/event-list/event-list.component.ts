@@ -1,6 +1,7 @@
 import { EventsService } from '../../services/events.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Event } from '../../common/models/event.model';
 
 @Component({
   selector: 'app-event-list',
@@ -8,24 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./event-list.component.scss'],
 })
 export class EventListComponent implements OnInit {
-  public events: {
-    id: number;
-    title: string;
-    date: string;
-    time: string;
-    location: string;
-    description: string;
-    price: any;
-    image: string;
-    capacity: number;
-  }[] = [];
+  event = new Event();
+  events: Event[] = [];
+  eventImage = '../../../assets/haze.webp';
   constructor(private eventService: EventsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.events = this.eventService.getEvents();
+    this.getEvents();
   }
+  getEvents(): void {
+    this.eventService.getEvents().subscribe((data) => {
+      this.events = data;
 
-  eventDetail(eventId: number) {
+      console.log(this.events);
+    });
+  }
+  eventDetail(eventId: string) {
+    console.log(eventId);
+
     this.router.navigate(['/event', eventId]);
   }
 }

@@ -30,7 +30,7 @@ export class RegisterComponent {
   ]);
   password = new FormControl('', [
     Validators.required,
-    Validators.minLength(6),
+    Validators.minLength(5),
   ]);
   role = new FormControl('', [Validators.required]);
 

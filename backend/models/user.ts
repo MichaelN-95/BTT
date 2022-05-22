@@ -2,10 +2,11 @@ import { compare, genSalt, hash } from 'bcryptjs';
 import { Document, model, Schema } from 'mongoose';
 
 const userSchema = new Schema<IUser>({
-  username: String,
+  username: { type: String, required: true, unique: true },
   email: { type: String, unique: true, lowercase: true, trim: true },
   password: String,
   role: String,
+  events: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
 });
 
 // Before saving the user, hash the password
@@ -54,6 +55,7 @@ interface IUser extends Document {
   email: string;
   password: string;
   role: string;
+  events: Event[];
   isModified(password: string): boolean;
   comparePassword(
     password: string,

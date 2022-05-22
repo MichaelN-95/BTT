@@ -1,4 +1,7 @@
 <div class="container">
+  <h2 *ngIf="loggedInUser !== null">
+    Welcome back {{ loggedInUser.username }}
+  </h2>
   <app-headlines></app-headlines>
   <h2 class="mt-2">Upcoming Events</h2>
   <hr />

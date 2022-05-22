@@ -22,6 +22,9 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { RegisterComponent } from './components/register/register.component';
 import { ToastComponent } from './common/toast/toast.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }),
     NgbModule,
   ],
-  providers: [EventsService, ToastComponent, UserService],
+  providers: [
+    EventsService,
+    ToastComponent,
+    UserService,
+    AuthGuardAdmin,
+    AuthGuardLogin,
+    AuthService,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })

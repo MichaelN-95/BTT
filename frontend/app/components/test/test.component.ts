@@ -1,3 +1,4 @@
+import { EventsService } from './../../services/events.service';
 import { Time } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -5,152 +6,35 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastComponent } from 'frontend/app/common/toast/toast.component';
 import { TestService } from 'frontend/app/services/test.service';
+import { Event } from '../../common/models/event.model';
+import { Test } from '../../common/models/test.model';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
-  eventForm: FormGroup;
+  event = new Event();
+  events: Event[] = [];
 
-  name = new FormControl('', [
-    Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  date = new FormControl('', [Validators.required]);
-
-  location = new FormControl('', [
-    Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  description = new FormControl('', [
-    Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  price = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  organizer = new FormControl('', [
-    Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  capacity = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
-
-  email = new FormControl('', [
-    Validators.required,
-    Validators.email,
-    Validators.minLength(2),
-  ]);
-
-  image = new FormControl('', [
-    Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(30),
-    Validators.pattern('[a-zA-Z0-9_-\\s]*'),
-  ]);
+  test = new Test();
+  tests: Test[] = [];
 
   constructor(
     private testService: TestService,
     public toast: ToastComponent,
-    private router: Router
-  ) {
-    this.eventForm = new FormGroup({
-      name: this.name,
-      date: this.date,
-      location: this.location,
-      description: this.description,
-      organizer: this.organizer,
-      email: this.email,
-      price: this.price,
-      image: this.image,
-      capacity: this.capacity,
+    private router: Router,
+    private eventsService: EventsService
+  ) {}
+
+  ngOnInit(): void {
+    this.getEvents();
+  }
+  getEvents(): void {
+    this.eventsService.getEvents().subscribe((data) => {
+      this.events = data;
+
+      console.log(this.events);
     });
   }
-  clearForm(form: FormGroup) {
-    form.reset();
-  }
-
-  setClassEventName() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventDate() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventLocation() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventDescription() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventOrganizer() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventEmail() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventPrice() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventImage() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  setClassEventCapacity() {
-    return {
-      'has-danger': !this.eventForm.pristine && !this.eventForm.valid,
-    };
-  }
-
-  addEvent() {
-    this.testService.addEvent(this.eventForm.value).subscribe({
-      next: (res) => {
-        this.toast.setMessage('You successfully registered!', 'success');
-        this.router.navigate(['/home']);
-      },
-      error: (error) => this.toast.setMessage('Form not valid', 'danger'),
-    });
-  }
-  ngOnInit(): void {}
 }

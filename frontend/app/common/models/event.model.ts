@@ -9,4 +9,5 @@ export class Event {
   price?: number;
   image?: string;
   capacity?: number;
+  attendees?: any;
 }

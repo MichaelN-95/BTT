@@ -8,18 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./event.component.scss'],
 })
 export class EventComponent implements OnInit {
-  eventItem: {
-    id: number;
-    title: string;
-    date: string;
-    time: string;
-    location: string;
-    description: string;
-    organizer: string;
-    price: number;
-    image: string;
-    capacity: number;
-  };
+  eventItem: any;
   constructor(
     private route: ActivatedRoute,
     private eventsService: EventsService,
@@ -28,11 +17,20 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const id = +params.get('id');
-      this.eventItem = this.eventsService.getEvent(id);
+      // this.getEvent(+params.get('id'));
+      this.getEvent(+params.get('id'));
+
+      // this.getEvent(id);
     });
   }
 
+  getEvent(id: number) {
+    this.eventsService.getEvent(id).subscribe((data) => {
+      this.eventItem = data;
+
+      console.log(this.eventItem);
+    });
+  }
   return() {
     this._location.back();
   }

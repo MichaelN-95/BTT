@@ -3,23 +3,27 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let event of events">
       <div class="card">
-        <img src="{{ event.image }}" class="card-img-top" alt="..." />
+        <img
+          src="{{ eventImage }}"
+          class="card-img-top img-thumbnail"
+          alt="..."
+        />
         <div class="card-body">
-          <h1 class="card-title">{{ event.title }}</h1>
+          <h1 class="card-title">{{ event.name }}</h1>
           <p class="lead">
             <i class="bi bi-geo-alt-fill" style="font-size: medium">{{
               event.location
             }}</i>
           </p>
           <p class="card-text text-truncate">{{ event.description }}</p>
-          <a class="btn btn-primary" (click)="eventDetail(event.id)"
+          <a class="btn btn-primary" (click)="eventDetail(event._id)"
             >Book Now!</a
           >
         </div>
         <div class="card-footer placeholder-glow hstack gap-2">
-          {{ event.date }}
+          {{ event.date | date: "dd/MM/yyyy" }}
           <div class="vr"></div>
-          {{ event.time }}
+          {{ event.date | date: "h:mm a" }}
           <div class="ms-auto">
             <div *ngIf="event.price > 0; else free">
               {{ "€" + event.price }}
