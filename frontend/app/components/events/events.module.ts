@@ -9,6 +9,7 @@ import { ListComponent } from './list/list.component';
 import { LayoutComponent } from './layout/layout.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { SharedModule } from 'frontend/app/shared/shared.module';
+import { AddEditListComponent } from './add-edit-list/add-edit-list.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { SharedModule } from 'frontend/app/shared/shared.module';
     ListComponent,
     AddEditComponent,
     EventDetailComponent,
+    AddEditListComponent,
   ],
   exports: [
     LayoutComponent,

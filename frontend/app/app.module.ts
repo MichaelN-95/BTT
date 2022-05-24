@@ -1,4 +1,4 @@
-import { ToastComponent } from './common/toast/toast.component';
+import { ToastComponent } from './shared/toast/toast.component';
 import { EventsModule } from './components/events/events.module';
 //Modules
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +28,9 @@ import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthService } from './services/auth.service';
 import { EventsService } from './services/events.service';
 import { UserService } from './services/user.service';
+import { BookEventComponent } from './components/book-event/book-event.component';
+import { SuccessComponent } from './components/book-event/success/success.component';
+import { FailComponent } from './components/book-event/fail/fail.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { UserService } from './services/user.service';
     AuthComponent,
     CreateEventComponent,
     RegisterComponent,
+    BookEventComponent,
+    SuccessComponent,
+    FailComponent,
   ],
   imports: [
     BrowserModule,

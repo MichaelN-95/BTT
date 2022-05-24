@@ -57,7 +57,9 @@ abstract class BaseCtrl {
   delete = async (req: Request, res: Response) => {
     try {
       await this.model.findOneAndRemove({ _id: req.params.id });
-      return res.sendStatus(200);
+      console.log('Deleted' + req.params.id);
+
+      return res.status(200).json({});
     } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }

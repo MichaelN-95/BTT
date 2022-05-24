@@ -23,10 +23,10 @@
           <a class="nav-link" aria-current="page" routerLink="/">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/test">Test</a>
+          <a class="nav-link" routerLink="/create-event">Test</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isAdmin">
-          <a class="nav-link" routerLink="/create-event">Add Event</a>
+          <a class="nav-link" routerLink="/event-list">Event List</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <div *ngIf="isLoggedIn; else elseBlock">

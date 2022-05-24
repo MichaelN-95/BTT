@@ -10,4 +10,5 @@ export class Event {
   image?: string;
   capacity?: number;
   attendees?: any;
+  isDeleting: boolean;
 }

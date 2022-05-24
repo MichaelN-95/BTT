@@ -1,1 +1,159 @@
-<p>add-edit works!</p>
+<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit User</h1>
+<div class="card">
+  <h4 class="card-header">Add Event</h4>
+  <div class="card-body container">
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <!-- Name/Date/Time/Location -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Name</label>
+            <input
+              type="text"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              formControlName="name"
+              name="title"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Date</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+              formControlName="date"
+              name="date"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Image</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="image"
+              [ngClass]="{ 'is-invalid': submitted && f.image.errors }"
+              name="image"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Location</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="location"
+              [ngClass]="{ 'is-invalid': submitted && f.location.errors }"
+              name="location"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Description</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              formControlName="description"
+              [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+              name="description"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Price</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="price"
+              [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+              name="price"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Organizer</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="organizer"
+              [ngClass]="{ 'is-invalid': submitted && f.organizer.errors }"
+              name="organizer"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Event Capacity</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="capacity"
+              [ngClass]="{ 'is-invalid': submitted && f.capacity.errors }"
+              name="capacity"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label class="bmd-label-floating">Organizer Email</label>
+            <input
+              type="text"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+              formControlName="email"
+              name="email"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Capacity/Organizer -->
+      <div class="row text-center mt-2">
+        <div class="col-md-12">
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary me-2"
+              [disabled]="!eventForm.valid"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary ms-2 me-2"
+              (click)="clearForm(eventForm)"
+            >
+              Reset Form
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary ms-2"
+              (click)="cancel()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

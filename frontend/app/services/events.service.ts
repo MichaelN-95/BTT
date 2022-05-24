@@ -8,6 +8,8 @@ import { Event } from '../common/models/event.model';
   providedIn: 'root',
 })
 export class EventsService {
+  paymentHandler: any = null;
+
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<Event[]> {
@@ -40,9 +42,22 @@ export class EventsService {
     );
   }
 
-  deleteEvent(id: number) {
-    this.http.delete<any>(`/api/event/${id}`).subscribe((data) => {
-      console.log(data);
-    });
+  deleteEvent(id: string) {
+    return this.http.delete<any>(`/api/event/${id}`);
+  }
+
+  bookEvent(id: string) {
+    return this.http.post<any>(`/api/event/${id}/book`, {});
+  }
+
+  populate() {
+    this.http.get<any>('/api/events/populate').subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

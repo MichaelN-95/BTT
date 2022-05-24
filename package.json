@@ -34,6 +34,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@ng-bootstrap/ng-bootstrap": "^12.1.1",
     "@popperjs/core": "^2.11.5",
+    "@stripe/stripe-js": "^1.29.0",
     "autoprefixer": "10.4.5",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.0-beta1",
@@ -47,6 +48,7 @@
     "morgan": "^1.10.0",
     "ngx-sharebuttons": "^10.0.0",
     "rxjs": "~7.4.0",
+    "stripe": "^9.2.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
   },

@@ -1,0 +1,19 @@
+<div class="centerText">
+  <div *ngIf="!isGettingCheckout">
+    <div class="header">Some prompt</div>
+    <input
+      type="number"
+      name=""
+      id=""
+      [(ngModel)]="bookingAmount"
+      class="checkoutInput"
+    />
+    <button class="btn" id="checkout-button" (click)="book()">book</button>
+  </div>
+
+  <div *ngIf="isGettingCheckout">
+    <div class="header">Some confirmation</div>
+    <div>sending checkout</div>
+    <app-loading [condition]="isLoading"></app-loading>
+  </div>
+</div>

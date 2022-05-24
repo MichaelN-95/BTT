@@ -1,3 +1,4 @@
+import { AddEditListComponent } from './add-edit-list/add-edit-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,9 +13,10 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: ListComponent },
+      { path: 'event-list', component: AddEditListComponent },
       { path: 'add', component: AddEditComponent },
-      { path: 'edit/:id', component: AddEditComponent },
-      { path: 'detail/:id', component: EventDetailComponent },
+      { path: 'event-list/edit/:id', component: AddEditComponent },
+      { path: 'event/:id', component: EventDetailComponent },
     ],
   },
 ];

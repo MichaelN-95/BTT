@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastComponent } from 'frontend/app/common/toast/toast.component';
+import { ToastComponent } from '../../shared/toast/toast.component';
 import { TestService } from 'frontend/app/services/test.service';
 import { Event } from '../../common/models/event.model';
 import { Test } from '../../common/models/test.model';

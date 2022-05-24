@@ -35,7 +35,7 @@
               "frontend/styles.scss"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"],
-            "aot": false
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -60,7 +60,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
+              "buildOptimizer": true,
               "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,

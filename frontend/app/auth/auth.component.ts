@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastComponent } from '../common/toast/toast.component';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-auth',

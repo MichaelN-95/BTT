@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
-import { ToastComponent } from '../../common/toast/toast.component';
+import { ToastComponent } from '../../shared/toast/toast.component';
 
 @Component({
   selector: 'app-register',

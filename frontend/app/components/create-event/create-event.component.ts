@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastComponent } from 'frontend/app/common/toast/toast.component';
+import { ToastComponent } from '../../shared/toast/toast.component';
 import { TestService } from 'frontend/app/services/test.service';
 @Component({
   selector: 'app-create-event',
@@ -144,7 +144,7 @@ export class CreateEventComponent implements OnInit {
   addEvent() {
     this.testService.addEvent(this.eventForm.value).subscribe({
       next: (res) => {
-        this.toast.setMessage('You successfully registered!', 'success');
+        this.toast.setMessage('Event Created!', 'success');
         this.router.navigate(['/home']);
       },
       error: (error) => this.toast.setMessage('Form not valid', 'danger'),

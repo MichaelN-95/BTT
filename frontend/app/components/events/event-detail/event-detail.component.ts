@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../../common/models/event.model';
+import { BookingService } from 'frontend/app/services/booking.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -17,7 +18,8 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private eventsService: EventsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private booking: BookingService
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +29,10 @@ export class EventDetailComponent implements OnInit {
       error: (err) => console.log(err),
       complete: () => (this.isLoading = false),
     });
+  }
+
+  simulateBooking() {
+    this.booking.book(this.event);
   }
 
   getCurrentURL(): string {
