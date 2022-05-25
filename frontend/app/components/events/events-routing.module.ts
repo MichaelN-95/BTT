@@ -6,6 +6,7 @@ import { AddEditComponent } from './add-edit/add-edit.component';
 
 import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
+import { AuthGuardAdmin } from 'frontend/app/services/auth-guard-admin.service';
 
 const routes: Routes = [
   {
@@ -13,7 +14,11 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: ListComponent },
-      { path: 'event-list', component: AddEditListComponent },
+      {
+        path: 'event-list',
+        component: AddEditListComponent,
+        canActivate: [AuthGuardAdmin],
+      },
       { path: 'add', component: AddEditComponent },
       { path: 'event-list/edit/:id', component: AddEditComponent },
       { path: 'event/:id', component: EventDetailComponent },

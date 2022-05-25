@@ -13,13 +13,11 @@ import { SharedModule } from './shared/shared.module';
 //components
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { CreateEventComponent } from './components/create-event/create-event.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/register/register.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TestComponent } from './components/test/test.component';
 
 // Services
@@ -40,9 +38,7 @@ import { FailComponent } from './components/book-event/fail/fail.component';
     HomeComponent,
     PageNotFoundComponent,
     FooterComponent,
-    SidebarComponent,
     AuthComponent,
-    CreateEventComponent,
     RegisterComponent,
     BookEventComponent,
     SuccessComponent,

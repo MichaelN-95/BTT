@@ -6,9 +6,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthComponent } from './auth/auth.component';
-import { CreateEventComponent } from './components/create-event/create-event.component';
 import { BookEventComponent } from './components/book-event/book-event.component';
 import { SuccessComponent } from './components/book-event/success/success.component';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
 
 const eventsModule = () =>
   import('./components/events/events.module').then((m) => m.EventsModule);
@@ -21,10 +21,6 @@ const routes: Routes = [
   {
     path: 'test',
     component: BookEventComponent,
-  },
-  {
-    path: 'create-event',
-    component: CreateEventComponent,
   },
   {
     path: 'events',
@@ -41,6 +37,7 @@ const routes: Routes = [
   {
     path: 'booking/success',
     component: SuccessComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'booking/fail',
@@ -50,11 +47,11 @@ const routes: Routes = [
     path: '404',
     component: PageNotFoundComponent,
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '/404', // 404
-  //   pathMatch: 'full',
-  // },
+  {
+    path: '**',
+    redirectTo: '/404', // 404
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

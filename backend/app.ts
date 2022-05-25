@@ -9,6 +9,7 @@ import * as path from 'path';
 import setMongo from './mongo';
 import setRoutes from './routes';
 import { examples } from './pop';
+
 const app = express();
 app.set('port', process.env.PORT || 3000);
 app.use('/', express.static(path.join(__dirname, '../btt')));
@@ -31,6 +32,8 @@ const main = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
+
+  // creates an admin account with the email and password set in the .env file
   const admin = await User.findOne({ email: process.env.ADMIN_EMAIL });
   if (!admin) {
     try {
@@ -47,6 +50,7 @@ const main = async (): Promise<any> => {
     console.log('Admin already exist!s');
   }
 
+  // populates the database with example events
   const events = await Event.find({});
   if (!events.length) {
     try {

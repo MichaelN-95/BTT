@@ -24,8 +24,6 @@ class BookingCtrl {
       cancel_url: process.env.HOST + '/booking/fail',
     });
 
-    console.log(session.url);
-
     res.json({
       status: 'ok',
       session,

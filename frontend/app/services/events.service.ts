@@ -10,8 +10,10 @@ import { Event } from '../common/models/event.model';
 export class EventsService {
   paymentHandler: any = null;
 
+  //init http service as variable named http
   constructor(private http: HttpClient) {}
 
+  //
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>('/api/events');
   }
