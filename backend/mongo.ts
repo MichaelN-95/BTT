@@ -7,7 +7,9 @@ const setMongo = async (): Promise<any> => {
   } else {
     mongodbURI = process.env.MONGODB_URI as string;
   }
-  await mongoose.connect(mongodbURI);
+  await mongoose.connect(mongodbURI).catch((err: any) => {
+    console.log(err);
+  });
   console.log('Connected to the database');
 };
 
