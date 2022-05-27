@@ -6,6 +6,12 @@ const stripe = require('stripe')(
 );
 class BookingCtrl {
   bookEvent = async (req: Request, res: Response) => {
+    let host: string;
+    if (process.env.NODE_ENV === 'test') {
+      host = process.env.HOST_TEST;
+    } else {
+      host = process.env.HOST;
+    }
     const { eventId, name, description, price } = req.body;
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -20,8 +26,8 @@ class BookingCtrl {
         },
       ],
       mode: 'payment',
-      success_url: process.env.HOST + '/booking/success',
-      cancel_url: process.env.HOST + '/booking/fail',
+      success_url: host + '/booking/success',
+      cancel_url: host + '/booking/fail',
     });
 
     res.json({
